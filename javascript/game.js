@@ -81,10 +81,13 @@ var eName4 = document.getElementById("e4Name");
 var eHealth4 = document.getElementById("e4Health")
 var eCounterPower4 = document.getElementById("e4CounterPower")
 
-var p1;
+//variables to store which character and opponent were chosen
+var selectedCharacter = '';
+var selectedOpponent;
+
+
 
 $(document).ready(function (){
-
     //Character details
     name1.textContent = "Name:" + charachters[0].c1.name;
     name2.textContent = "Name:" + charachters[0].c2.name;
@@ -117,6 +120,19 @@ $(document).ready(function (){
     eCounterPower3.textContent = "Counter Power:" + enemies[0].e3.counterAttackP;
     eCounterPower4.textContent = "Counter Power:" + enemies[0].e4.counterAttackP;
 
+
+    //functions to save selected character and and opponent 
+    function charactedSelected(name){
+        selectedCharacter = name;
+        //console.log(selectedCharacter);
+       
+    }
+
+    function opponentSelected(name){
+        selectedOpponent = name;
+       
+    }
+
     if($(".c1").on("click", function (){
         //name1.textContent = "Name:" + charachters[0].c1.name;
         $(".c1").attr("class","chosen")
@@ -124,8 +140,12 @@ $(document).ready(function (){
         $(".c3").attr("class","enemies")
         $(".c4").attr("class","enemies")
         $(".char").attr("class","charChose")
-        p1 = charachters[0].c1.name;
+        // charactedSelected("c1");
+        //****SAVE CHARACTER NAME TO selectedCharacter VARIABLE */
+        selectedCharacter = charachters[0].c1.name;
     }));
+
+    console.log(selectedCharacter);
     
     if($(".c2").on("click", function (){
         //name2.textContent = "Name:" + charachters[0].c2.name;
@@ -165,7 +185,6 @@ $(document).ready(function (){
     }));
     
     if($(".e2").on("click", function (){
-        opponentChosen += enemies[0].e2.name;
         $(".e1").attr("class","enemies")
         $(".e2").attr("class","chosenEnemy")
         $(".e3").attr("class","enemies")
@@ -174,7 +193,6 @@ $(document).ready(function (){
     }));
     
     if($(".e3").on("click", function (){
-        opponentChosen = enemies[0].e3.name;
         $(".e1").attr("class","enemies")
         $(".e2").attr("class","enemies")
         $(".e3").attr("class","chosenEnemy")
@@ -183,7 +201,6 @@ $(document).ready(function (){
     }));
     
     if($(".e4").on("click", function (){
-        opponentChosen = enemies[0].e4.name;
         $(".e1").attr("class","enemies")
         $(".e2").attr("class","enemies")
         $(".e3").attr("class","enemies")
@@ -192,33 +209,33 @@ $(document).ready(function (){
 
     }));
 
-    console.log(p1);
+    console.log(selectedCharacter);
+  
 
-    // **********************!!!!!!!!!!!
-    // Is there a way to use this function like so:
-    // function attack(characters_id){
-    //     charachters[0].characters_id.health -= 10;
-    // }**********************!!!!!!!!!!!
+
 
     function characterAttack(id){
-       if(id=="c1"){
-        charachters[0].c1.health -= 10;
+       if(id== "c1"){
+        enemies[0].c1.health -= 10;
         charachters[0].c1.attackP += charachters[0].c1.attackP;
        }
        else if(id == "c2"){
-        charachters[0].c2.health -= 10;
+        enemies[0].c2.health -= 10;
+        charachters[0].c2.attackP += charachters[0].c3.attackP;
        }
        else if(id == "c3"){
-        charachters[0].c3.health -= 10;
+        enemies[0].c3.health -= 10;
+        charachters[0].c3.attackP += charachters[0].c1.attackP;
        }
        else if(id == "c4"){
-        charachters[0].c4.health -= 10;
+        enemies[0].c4.health -= 10;
+        charachters[0].c4.attackP += charachters[0].c4.attackP;
        }
 
     }
 
-     characterAttack("c1");
-
+     
+//Need to work on///////
     function counterAttack(id){
         if(id=="e1"){
             charachters[0].e1.health -= 10;
