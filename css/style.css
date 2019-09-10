@@ -20,7 +20,7 @@ h1{
 .chosen{
     position: fixed;
     left: 10%;
-    top:20%;
+    bottom:10%;
     border-style: solid;
     border-color: green;
     text-align: center;
@@ -34,7 +34,7 @@ h1{
 .chosenEnemy{
     position: fixed;
     left: 10%;
-    top:60%;
+    bottom: 40%;
     border-style: solid;
     border-color: red;
     text-align: center;
@@ -55,4 +55,5 @@ button{
    top:50%;
    color: blue
 }
+
 

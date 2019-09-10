@@ -1,4 +1,5 @@
 var charChosen;
+//array of objects created for characters
 var charachters = [{
     "c1":{
         name: "Collinsworth", health: 120, attackP: 12, counterAttackP: 10,
@@ -13,7 +14,7 @@ var charachters = [{
         name: "Adams", health: 110, attackP: 14, counterAttackP: 10,
     }
 }];
-
+//array of objects created for enemies 
 var enemies = [{
     "e1":{
         name: "Mack", health: 150, counterAttackP: 15,
@@ -35,25 +36,25 @@ console.log("ENEMIES:"+enemies);
 var characterChosen;
 var opponentChosen;
 
-//Character 1
+//Character 1 variables to access ids in HTML
 var name1 = document.getElementById("c1Name");
 var health1 = document.getElementById("c1Health")
 var attackPower1 = document.getElementById("c1AttackPower")
 var counterPower1 = document.getElementById("c1CounterPower")
 
-//Character 2
+//Character 2 variables to access ids in HTML
 var name2 = document.getElementById("c2Name");
 var health2 = document.getElementById("c2Health")
 var attackPower2 = document.getElementById("c2AttackPower")
 var counterPower2 = document.getElementById("c2CounterPower")
 
-//Character 3
+//Character 3 variables to access ids in HTML
 var name3 = document.getElementById("c3Name");
 var health3 = document.getElementById("c3Health")
 var attackPower3 = document.getElementById("c3AttackPower")
 var counterPower3 = document.getElementById("c3CounterPower")
 
-//Character 4
+//Character 4 variables to access ids in HTML
 var name4 = document.getElementById("c4Name");
 var health4 = document.getElementById("c4Health")
 var attackPower4 = document.getElementById("c4AttackPower")
@@ -61,34 +62,33 @@ var counterPower4 = document.getElementById("c4CounterPower")
 
 
 
-//Opponent 1
+//Opponent 1 variables to access ids in HTML
 var eName1 = document.getElementById("e1Name");
 var eHealth1 = document.getElementById("e1Health")
 var eCounterPower1 = document.getElementById("e1CounterPower")
 
-//Opponent 2
+//Opponent 2 variables to access ids in HTML
 var eName2 = document.getElementById("e2Name");
 var eHealth2 = document.getElementById("e2Health")
 var eCounterPower2 = document.getElementById("e2CounterPower")
 
-//Opponent 3
+//Opponent 3 variables to access ids in HTML
 var eName3 = document.getElementById("e3Name");
 var eHealth3 = document.getElementById("e3Health")
 var eCounterPower3 = document.getElementById("e3CounterPower")
 
-//Opponent 4
+//Opponent 4 variables to access ids in HTML
 var eName4 = document.getElementById("e4Name");
 var eHealth4 = document.getElementById("e4Health")
 var eCounterPower4 = document.getElementById("e4CounterPower")
 
 //variables to store which character and opponent were chosen
-var selectedCharacter = '';
-var selectedOpponent;
 
 
 
 $(document).ready(function (){
-    //Character details
+    //pulling Character details from the array of objects and displaying them on 
+    //the HTML page
     name1.textContent = "Name:" + charachters[0].c1.name;
     name2.textContent = "Name:" + charachters[0].c2.name;
     name3.textContent = "Name:" + charachters[0].c3.name;
@@ -106,7 +106,8 @@ $(document).ready(function (){
     counterPower3.textContent = "Counter Power:" + charachters[0].c3.counterAttackP;
     counterPower4.textContent = "Counter Power:" + charachters[0].c4.counterAttackP;
 
-    //Opponent details
+    //pulling opponenet details from the array of objects and displaying them on 
+    //the HTML page
     eName1.textContent = "Name:" + enemies[0].e1.name;
     eName2.textContent = "Name:" + enemies[0].e2.name;
     eName3.textContent = "Name:" + enemies[0].e3.name;
@@ -121,43 +122,40 @@ $(document).ready(function (){
     eCounterPower4.textContent = "Counter Power:" + enemies[0].e4.counterAttackP;
 
 
-    //functions to save selected character and and opponent 
-    function charactedSelected(name){
-        selectedCharacter = name;
-        //console.log(selectedCharacter);
-       
-    }
+   
 
-    function opponentSelected(name){
-        selectedOpponent = name;
-       
-    }
+    //console.log("Char: " + selectedCharacter);
+    var selectedCharacter = "";
+    
 
+    //When object clicked on...its' class and hide. 
     if($(".c1").on("click", function (){
-        //name1.textContent = "Name:" + charachters[0].c1.name;
         $(".c1").attr("class","chosen")
-        $(".c2").attr("class","enemies")
-        $(".c3").attr("class","enemies")
-        $(".c4").attr("class","enemies")
-        $(".char").attr("class","charChose")
-        // charactedSelected("c1");
-        //****SAVE CHARACTER NAME TO selectedCharacter VARIABLE */
+        //$(".c2").attr("class","enemies")
+        $(".c2").hide();
+        $(".c3").hide();
+        $(".c4").hide();
+        $(".char").hide();
         selectedCharacter = charachters[0].c1.name;
+        //console.log(selectedCharacter);
     }));
 
-    console.log(selectedCharacter);
-    
+   // console.log("Char: " + selectedCharacter);
+    $(".button-2").hide();
+    $("#counterAttackMessage").hide();
+
+
+    //If object is clicked, show/hide elements and save which character is chosen
     if($(".c2").on("click", function (){
-        //name2.textContent = "Name:" + charachters[0].c2.name;
         $(".c1").attr("class","enemies")
         $(".c2").attr("class","chosen")
         $(".c3").attr("class","enemies")
         $(".c4").attr("class","enemies")
         $(".char").attr("class","charChose")
+
     }));
     
     if($(".c3").on("click", function (){
-        //name3.textContent = "Name:" + charachters[0].c3.name;
         $(".c1").attr("class","enemies")
         $(".c2").attr("class","enemies")
         $(".c3").attr("class","chosen")
@@ -166,7 +164,6 @@ $(document).ready(function (){
     }));
     
     if($(".c4").on("click", function (){
-        //name4.textContent = "Name:" + charachters[0].c4.name;
         $(".c1").attr("class","enemies")
         $(".c2").attr("class","enemies")
         $(".c3").attr("class","enemies")
@@ -182,7 +179,9 @@ $(document).ready(function (){
         $(".e3").attr("class","enemies")
         $(".e4").attr("class","enemies")
         $(".opp").attr("class","charChose")
+        $(".button-2").show();
     }));
+
     
     if($(".e2").on("click", function (){
         $(".e1").attr("class","enemies")
@@ -190,6 +189,7 @@ $(document).ready(function (){
         $(".e3").attr("class","enemies")
         $(".e4").attr("class","enemies")
         $(".opp").attr("class","charChose")
+        $(".button-2").show();
     }));
     
     if($(".e3").on("click", function (){
@@ -198,6 +198,7 @@ $(document).ready(function (){
         $(".e3").attr("class","chosenEnemy")
         $(".e4").attr("class","enemies")
         $(".opp").attr("class","charChose")
+        $(".button-2").show();
     }));
     
     if($(".e4").on("click", function (){
@@ -206,54 +207,104 @@ $(document).ready(function (){
         $(".e3").attr("class","enemies")
         $(".e4").attr("class","chosenEnemy")
         $(".opp").attr("class","charChose")
+        $(".button-2").show();
 
     }));
 
-    console.log(selectedCharacter);
+    //console.log("char: " + selectedCharacter);
   
 
 
-
+    //this function attacks the opponent and decreases their health by 10
     function characterAttack(id){
-       if(id== "c1"){
-        enemies[0].c1.health -= 10;
-        charachters[0].c1.attackP += charachters[0].c1.attackP;
+     var charHealth = 0;
+       if(id== "e1"){
+        charHealth = enemies[0].e1.health;
+        charHealth -= 10;
+        eHealth1.textContent = "Health:" + charHealth;
+       
        }
-       else if(id == "c2"){
-        enemies[0].c2.health -= 10;
-        charachters[0].c2.attackP += charachters[0].c3.attackP;
+       if(id == "e2"){
+        charHealth = enemies[0].e2.health;
+        charHealth -= 10;
+        
        }
-       else if(id == "c3"){
-        enemies[0].c3.health -= 10;
-        charachters[0].c3.attackP += charachters[0].c1.attackP;
+       if(id == "e3"){
+        charHealth = enemies[0].e3.health 
+        charHealth -= 10;
+        
        }
-       else if(id == "c4"){
-        enemies[0].c4.health -= 10;
-        charachters[0].c4.attackP += charachters[0].c4.attackP;
+       if(id == "e4"){
+        charHealth = enemies[0].e4.health 
+        charHealth -= 10;
+        
        }
+
+       return charHealth;
 
     }
+
+
+//THIS IS TO ADD POWER TO CHARACTERS POWER ATTACK********.//
+    // charachters[0].c1.attackP += charachters[0].c1.attackP;
+    // charachters[0].c2.attackP += charachters[0].c3.attackP;
+    // charachters[0].c3.attackP += charachters[0].c1.attackP;
+    // charachters[0].c4.attackP += charachters[0].c4.attackP;
+
+    //characterAttack("e1");
+    //console.log(enemies[0].e1.health);
 
      
 //Need to work on///////
     function counterAttack(id){
-        if(id=="e1"){
-            charachters[0].e1.health -= 10;
+        var oppAttack = 0;
+        if(id=="c1"){
+            oppAttack = charachters[0].c1.health 
+            oppAttack -= 10;
            }
-           else if(id == "e2"){
-            charachters[0].e2.health -= 10;
+           else if(id == "c2"){
+            oppAttack = charachters[0].c2.health 
+            oppAttack -= 10;
            }
-           else if(id == "e3"){
-            charachters[0].e3.health -= 10;
+           else if(id == "c3"){
+            oppAttack = charachters[0].c3.health 
+            oppAttack -= 10;
            }
-           else if(id == "e4"){
-            charachters[0].e4.health -= 10;
+           else if(id == "c4"){
+            oppAttack = charachters[0].c4.health 
+            oppAttack -= 10;
            }
+
+           return oppAttack;
+
+           
     }
 
-    console.log(charachters[0].c1.attackP);
+    //counterAttack("c3");
+    
 
     //characterAttack();
+
+    $(".button-2").on("click", function(){
+        //characterAttack("e1");
+        eHealth1.textContent = "Health:" + characterAttack("e1");
+        eHealth2.textContent = "Health:" + characterAttack("e2");
+        eHealth3.textContent = "Health:" + characterAttack("e3");
+        eHealth4.textContent = "Health:" + characterAttack("e4");
+        //update characters health
+        $("#counterAttackMessage").show();
+        health1.textContent = "Health:" + counterAttack("c1");
+        health2.textContent = "Health:" + counterAttack("c2");
+        health3.textContent = "Health:" + counterAttack("c3");
+        health4.textContent = "Health:" + counterAttack("c4");
+
+
+    })
+
+    //console.log(characterAttack("e2"));
+    
+
+    
 
 
 
