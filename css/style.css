@@ -1,0 +1,58 @@
+.c1,.c2,.c3,.c4{
+    border-style:dashed;
+    text-align: center;
+}
+
+.e1,.e2,.e3,.e4{
+    border-style:dashed;
+    text-align: center;
+}
+
+body{
+    margin:5%;
+}
+
+h1{
+    position: relative;
+    right:1%;
+}
+
+.chosen{
+    position: fixed;
+    left: 10%;
+    top:20%;
+    border-style: solid;
+    border-color: green;
+    text-align: center;
+
+}
+
+.enemies{
+    display: none;
+}
+
+.chosenEnemy{
+    position: fixed;
+    left: 10%;
+    top:60%;
+    border-style: solid;
+    border-color: red;
+    text-align: center;
+}
+
+button{
+    position: fixed;
+    top:18%;
+    left:45%;
+}
+.charChose{
+    display: none;
+}
+
+
+.fight{
+   position: relative;
+   top:50%;
+   color: blue
+}
+
