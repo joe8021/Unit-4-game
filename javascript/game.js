@@ -218,11 +218,23 @@ $(document).ready(function (){
     //this function attacks the opponent and decreases their health by 10
     function characterAttack(id){
      var charHealth = 0;
-       if(id== "e1"){
-        //charHealth = enemies[0].e1.health;
-        enemies[0].e1.health -= 10;
+       if(id== "c1"){
+        //Enemy 1
+        enemies[0].e1.health -= 12;
         charHealth = enemies[0].e1.health;
         eHealth1.textContent = "Health:" + enemies[0].e1.health;
+        //Enemy 2
+        enemies[0].e2.health -= 12;
+        charHealth = enemies[0].e2.health;
+        eHealth2.textContent = "Health:" + enemies[0].e2.health;
+        //Enemy 3
+        enemies[0].e3.health -= 10;
+        charHealth = enemies[0].e3.health;
+        eHealth3.textContent = "Health:" + enemies[0].e3.health;
+        //Enemy 4
+        enemies[0].e4.health -= 10;
+        charHealth = enemies[0].e4.health;
+        eHealth4.textContent = "Health:" + enemies[0].e4.health;
        
        }
        if(id == "e2"){
@@ -331,7 +343,7 @@ $(document).ready(function (){
     
       $(document).on("click", ".button-2", function(){
         //characterAttack("e1")
-        eHealth1.textContent = "Health:" + characterAttack("e1");
+        eHealth1.textContent = "Health:" + characterAttack("c1");
         
         eHealth2.textContent = "Health:" + characterAttack("e2");
         eHealth3.textContent = "Health:" + characterAttack("e3");
