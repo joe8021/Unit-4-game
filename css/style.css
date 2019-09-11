@@ -56,4 +56,49 @@ button{
    color: blue
 }
 
+#lecter{
+    position: fixed;
+    right: 10%;
+    height:200px;
+}
+#rodgers{
+    position: fixed;
+    top:65%;
+    right: 10%;
+    height:200px;
+}
+#mack{
+    position: fixed;
+    right: 10%;
+    height:200px;
+}
+#adams{
+    position: fixed;
+    top:65%;
+    right: 10%;
+    height:200px;
+}
+#crosby{
+    position: fixed;
+    top:65%;
+    right: 10%;
+    height:200px;
+}
+#meyers{
+    position: fixed;
+    right: 10%;
+    height:200px;
+}
+#collinsworth{
+    position: fixed;
+    top:65%;
+    right: 10%;
+    height:200px;
+}
+#bates{
+    position: fixed;
+    right: 10%;
+    height:200px;
+}
+
 
