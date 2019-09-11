@@ -280,14 +280,35 @@ $(document).ready(function (){
            
     }
 
+    $("#mack").hide();
+
     //counterAttack("c3");
+    if($(".e1").on("click", function(){
+        $("#mack").show();
+    }))
+    if($(".e2").on("click", function(){
+        $("#mack").show();
+    }))
+    if($(".e3").on("click", function(){
+        $("#mack").show();
+    }))
+    if($(".e3").on("click", function(){
+        $("#mack").show();
+    }))
+    //FINSIH THESE
     
 
     //characterAttack();
+    var test = 0;
+    //var health;
+    //console.log(charachters[0].e1.health);
+    
+      $(".button-2").on("click", function(){
+        //characterAttack("e1")
 
-    $(".button-2").on("click", function(){
-        //characterAttack("e1");
+        
         eHealth1.textContent = "Health:" + characterAttack("e1");
+        
         eHealth2.textContent = "Health:" + characterAttack("e2");
         eHealth3.textContent = "Health:" + characterAttack("e3");
         eHealth4.textContent = "Health:" + characterAttack("e4");
@@ -296,10 +317,10 @@ $(document).ready(function (){
         health1.textContent = "Health:" + counterAttack("c1");
         health2.textContent = "Health:" + counterAttack("c2");
         health3.textContent = "Health:" + counterAttack("c3");
-        health4.textContent = "Health:" + counterAttack("c4");
-
+        health4.textContent = "Health:" + counterAttack("c4");       
 
     })
+
 
     //console.log(characterAttack("e2"));
     
