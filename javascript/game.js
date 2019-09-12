@@ -141,7 +141,7 @@ $(document).ready(function (){
     }));
 
    // console.log("Char: " + selectedCharacter);
-    $(".button-2").hide();
+    $("#attack_button").hide();
     $("#counterAttackMessage").hide();
 
 
@@ -179,7 +179,7 @@ $(document).ready(function (){
         $(".e3").attr("class","enemies")
         $(".e4").attr("class","enemies")
         $(".opp").attr("class","charChose")
-        $(".button-2").show();
+        $("#attack_button").show();
     }));
 
     
@@ -189,7 +189,7 @@ $(document).ready(function (){
         $(".e3").attr("class","enemies")
         $(".e4").attr("class","enemies")
         $(".opp").attr("class","charChose")
-        $(".button-2").show();
+        $("#attack_button").show();
     }));
     
     if($(".e3").on("click", function (){
@@ -198,7 +198,7 @@ $(document).ready(function (){
         $(".e3").attr("class","chosenEnemy")
         $(".e4").attr("class","enemies")
         $(".opp").attr("class","charChose")
-        $(".button-2").show();
+        $("#attack_button").show();
     }));
     
     if($(".e4").on("click", function (){
@@ -207,58 +207,150 @@ $(document).ready(function (){
         $(".e3").attr("class","enemies")
         $(".e4").attr("class","chosenEnemy")
         $(".opp").attr("class","charChose")
-        $(".button-2").show();
+        $("#attack_button").show();
 
     }));
-
-    //console.log("char: " + selectedCharacter);
+    
   
 
 
     //this function attacks the opponent and decreases their health by 10
+    
     function characterAttack(id){
-     var charHealth = 0;
-       if(id== "c1"){
         //Enemy 1
-        enemies[0].e1.health -= 12;
-        charHealth = enemies[0].e1.health;
-        eHealth1.textContent = "Health:" + enemies[0].e1.health;
-        //Enemy 2
-        enemies[0].e2.health -= 12;
-        charHealth = enemies[0].e2.health;
-        eHealth2.textContent = "Health:" + enemies[0].e2.health;
-        //Enemy 3
-        enemies[0].e3.health -= 10;
-        charHealth = enemies[0].e3.health;
-        eHealth3.textContent = "Health:" + enemies[0].e3.health;
-        //Enemy 4
-        enemies[0].e4.health -= 10;
-        charHealth = enemies[0].e4.health;
-        eHealth4.textContent = "Health:" + enemies[0].e4.health;
-       
-       }
-       if(id == "e2"){
-        enemies[0].e2.health -= 10;
-        charHealth = enemies[0].e2.health;
-        eHealth2.textContent = "Health:" + enemies[0].e2.health;
-        
-       }
-       if(id == "e3"){
-        enemies[0].e3.health -= 10;
-        charHealth = enemies[0].e3.health;
-        eHealth3.textContent = "Health:" + enemies[0].e3.health;
-        
-       }
-       if(id == "e4"){
-        enemies[0].e4.health -= 10;
-        charHealth = enemies[0].e4.health;
-        eHealth4.textContent = "Health:" + enemies[0].e4.health;
-        
-       }
+            //console.log(i);
+            if(id == "c1"){
+                //e1
+                enemies[0].e1.health -= charachters[0].c1.attackP;
+                charHealth = enemies[0].e1.health;
+                eHealth1.textContent = "Health:" + enemies[0].e1.health;
+                //e2
+                enemies[0].e2.health -= charachters[0].c1.attackP;;
+                charHealth = enemies[0].e2.health;
+                eHealth2.textContent = "Health:" + enemies[0].e2.health;
+                //e3
+                enemies[0].e3.health -= charachters[0].c1.attackP;;
+                charHealth = enemies[0].e3.health;
+                eHealth3.textContent = "Health:" + enemies[0].e3.health;
+                //e4
+                enemies[0].e4.health -= charachters[0].c1.attackP;;
+                charHealth = enemies[0].e4.health;
+                eHealth4.textContent = "Health:" + enemies[0].e4.health;
+            }
+            if(id == "c2"){
+                //e1
+                enemies[0].e1.health -= charachters[0].c2.attackP;
+                charHealth = enemies[0].e1.health;
+                eHealth1.textContent = "Health:" + enemies[0].e1.health;
+                //e2
+                enemies[0].e2.health -= charachters[0].c2.attackP;;
+                charHealth = enemies[0].e2.health;
+                eHealth2.textContent = "Health:" + enemies[0].e2.health;
+                //e3
+                enemies[0].e3.health -= charachters[0].c2.attackP;;
+                charHealth = enemies[0].e3.health;
+                eHealth3.textContent = "Health:" + enemies[0].e3.health;
+                //e4
+                enemies[0].e4.health -= charachters[0].c2.attackP;;
+                charHealth = enemies[0].e4.health;
+                eHealth4.textContent = "Health:" + enemies[0].e4.health;
+            }
+            if(id == "c3"){
+                //e3
+                enemies[0].e1.health -= charachters[0].c3.attackP;
+                charHealth = enemies[0].e1.health;
+                eHealth1.textContent = "Health:" + enemies[0].e1.health;
+                //e2
+                enemies[0].e2.health -= charachters[0].c3.attackP;;
+                charHealth = enemies[0].e2.health;
+                eHealth2.textContent = "Health:" + enemies[0].e2.health;
+                //e3
+                enemies[0].e3.health -= charachters[0].c3.attackP;;
+                charHealth = enemies[0].e3.health;
+                eHealth3.textContent = "Health:" + enemies[0].e3.health;
+                //e4
+                enemies[0].e4.health -= charachters[0].c3.attackP;;
+                charHealth = enemies[0].e4.health;
+                eHealth4.textContent = "Health:" + enemies[0].e4.health;
+            }
+            if(id == "c4"){
+                //e1
+                enemies[0].e1.health -= charachters[0].c4.attackP;
+                charHealth = enemies[0].e1.health;
+                eHealth1.textContent = "Health:" + enemies[0].e1.health;
+                //e2
+                enemies[0].e2.health -= charachters[0].c4.attackP;;
+                charHealth = enemies[0].e2.health;
+                eHealth2.textContent = "Health:" + enemies[0].e2.health;
+                //e3
+                enemies[0].e3.health -= charachters[0].c4.attackP;;
+                charHealth = enemies[0].e3.health;
+                eHealth3.textContent = "Health:" + enemies[0].e3.health;
+                //e4
+                enemies[0].e4.health -= charachters[0].c4.attackP;;
+                charHealth = enemies[0].e4.health;
+                eHealth4.textContent = "Health:" + enemies[0].e4.health;
+            }
+            // if($("#charcter2").on("click", function(){
+            //     //e1
+            //     enemies[0].e1.health -= charachters[0].c2.attackP;;
+            //     charHealth = enemies[0].e1.health;
+            //     eHealth1.textContent = "Health:" + enemies[0].e1.health;
+            //     //e2
+            //     enemies[0].e2.health -= charachters[0].c2.attackP;;
+            //     charHealth = enemies[0].e2.health;
+            //     eHealth2.textContent = "Health:" + enemies[0].e2.health;
+            //     //e3
+            //     enemies[0].e3.health -= charachters[0].c2.attackP;;
+            //     charHealth = enemies[0].e3.health;
+            //     eHealth3.textContent = "Health:" + enemies[0].e3.health;
+            //     //e4
+            //     enemies[0].e4.health -= charachters[0].c2.attackP;;
+            //     charHealth = enemies[0].e4.health;
+            //     eHealth4.textContent = "Health:" + enemies[0].e4.health;
+            // }))
+            // if(oppHealths[i] == "c3"){
+            //     //e1
+            //     enemies[0].e1.health -= charachters[0].c3.attackP;;
+            //     charHealth = enemies[0].e1.health;
+            //     eHealth1.textContent = "Health:" + enemies[0].e1.health;
+            //     //e2
+            //     enemies[0].e2.health -= charachters[0].c3.attackP;;
+            //     charHealth = enemies[0].e2.health;
+            //     eHealth2.textContent = "Health:" + enemies[0].e2.health;
+            //     //e3
+            //     enemies[0].e3.health -= charachters[0].c3.attackP;;
+            //     charHealth = enemies[0].e3.health;
+            //     eHealth3.textContent = "Health:" + enemies[0].e3.health;
+            //     //e4
+            //     enemies[0].e4.health -= charachters[0].c3.attackP;;
+            //     charHealth = enemies[0].e4.health;
+            //     eHealth4.textContent = "Health:" + enemies[0].e4.health;
+                
+            // }
+            // if(oppHealths[i] == "c4"){
+            //     //e1
+            //     enemies[0].e1.health -= charachters[0].c4.attackP;;
+            //     charHealth = enemies[0].e1.health;
+            //     eHealth1.textContent = "Health:" + enemies[0].e1.health;
+            //     //e2
+            //     enemies[0].e2.health -= charachters[0].c4.attackP;;
+            //     charHealth = enemies[0].e2.health;
+            //     eHealth2.textContent = "Health:" + enemies[0].e2.health;
+            //     //e3
+            //     enemies[0].e3.health -= charachters[0].c4.attackP;;
+            //     charHealth = enemies[0].e3.health;
+            //     eHealth3.textContent = "Health:" + enemies[0].e3.health;
+            //     //e4
+            //     enemies[0].e4.health -= charachters[0].c4.attackP;;
+            //     charHealth = enemies[0].e4.health;
+            //     eHealth4.textContent = "Health:" + enemies[0].e4.health;
+            // }
 
-       return charHealth;
-
+            // console.log(enemies[0].e1.health);
+            
     }
+
 
 
 //THIS IS TO ADD POWER TO CHARACTERS POWER ATTACK********.//
@@ -273,7 +365,7 @@ $(document).ready(function (){
      
 //Need to work on///////
     function counterAttack(id){
-        var oppAttack = 0;
+        var counterAttack = ["Collinsworth","Mason",];
         if(id=="c1"){
             oppAttack = charachters[0].c1.health 
             oppAttack -= 10;
@@ -332,8 +424,28 @@ $(document).ready(function (){
     if($(".e4").on("click", function(){
         $("#lecter").show();
     }))
-    
 
+
+
+    
+    
+    // $("#charcter2").on("click", function(){
+    //     characterAttack("c1");
+    // })
+
+    function fade(){
+        var interval = $("#attackDiv").html("<h2>" + "Click Your Character to Attack!" + "</h2>");
+        interval.animate({ opacity: "1" });
+        interval.animate({ opacity: "0.9" });
+        interval.animate({ opacity: "0.8" });
+        interval.animate({ opacity: "0.7" });
+        interval.animate({ opacity: "0.5" });
+        interval.animate({ opacity: "0.3" });
+        interval.animate({ opacity: "0.0" });
+        $("#charcter2").on("click", function(){
+
+        })
+    }
     
 
     //characterAttack();
@@ -341,19 +453,21 @@ $(document).ready(function (){
     //var health;
     //console.log(charachters[0].e1.health);
     
-      $(document).on("click", ".button-2", function(){
-        //characterAttack("e1")
-        eHealth1.textContent = "Health:" + characterAttack("c1");
-        
-        eHealth2.textContent = "Health:" + characterAttack("e2");
-        eHealth3.textContent = "Health:" + characterAttack("e3");
-        eHealth4.textContent = "Health:" + characterAttack("e4");
-        //update characters health
-        $("#counterAttackMessage").show();
-        health1.textContent = "Health:" + counterAttack("c1");
-        health2.textContent = "Health:" + counterAttack("c2");
-        health3.textContent = "Health:" + counterAttack("c3");
-        health4.textContent = "Health:" + counterAttack("c4");       
+      $(document).one("click", "#attack_button", function(){ 
+        fade();
+        $("#charcter1").on("click", function(){
+            characterAttack("c1");
+        })
+        $("#charcter2").on("click", function(){
+            characterAttack("c2");
+        })
+        $("#charcter3").on("click", function(){
+            characterAttack("c3");
+        })
+        $("#charcter4").on("click", function(){
+            characterAttack("c4");
+        })
+               
 
     })
 
