@@ -2,31 +2,31 @@ var charChosen;
 //array of objects created for characters
 var charachters = [{
     "c1":{
-        name: "Collinsworth", health: 120, attackP: 12, counterAttackP: 10,
+        name: "Collinsworth", health: 120, attackP: 12,
     },
     "c2":{
-        name: "Mason", health: 200, attackP: 10, counterAttackP: 10,
+        name: "Mason", health: 200, attackP: 10,
     },
     "c3":{
-        name: "Rodgers", health: 150, attackP: 15, counterAttackP: 10,
+        name: "Rodgers", health: 150, attackP: 15,
     },
     "c4":{
-        name: "Adams", health: 110, attackP: 14, counterAttackP: 10,
+        name: "Adams", health: 110, attackP: 14,
     }
 }];
 //array of objects created for enemies 
 var enemies = [{
     "e1":{
-        name: "Mack", health: 150, counterAttackP: 15,
+        name: "Mack", health: 150, counterAttackP: 10,
     },
     "e2":{
-        name: "Meyers", health: 200, counterAttackP: 12,
+        name: "Meyers", health: 200, counterAttackP: 10,
     },
     "e3":{
-        name: "Bates", health: 130, counterAttackP: 14,
+        name: "Bates", health: 130, counterAttackP: 10,
     },
     "e4":{
-        name: "Lecter", health: 105, counterAttackP: 20,
+        name: "Lecter", health: 105, counterAttackP: 10,
     }
 }];
 
@@ -35,6 +35,8 @@ console.log("ENEMIES:"+enemies);
 
 var characterChosen;
 var opponentChosen;
+
+$("#win").hide();
 
 //Character 1 variables to access ids in HTML
 var name1 = document.getElementById("c1Name");
@@ -101,10 +103,7 @@ $(document).ready(function (){
     attackPower2.textContent = "Attack Power:" + charachters[0].c2.attackP;
     attackPower3.textContent = "Attack Power:" + charachters[0].c3.attackP;
     attackPower4.textContent = "Attack Power:" + charachters[0].c4.attackP;
-    counterPower1.textContent = "Counter Power:" + charachters[0].c1.counterAttackP;
-    counterPower2.textContent = "Counter Power:" + charachters[0].c2.counterAttackP;
-    counterPower3.textContent = "Counter Power:" + charachters[0].c3.counterAttackP;
-    counterPower4.textContent = "Counter Power:" + charachters[0].c4.counterAttackP;
+    
 
     //pulling opponenet details from the array of objects and displaying them on 
     //the HTML page
@@ -144,8 +143,6 @@ $(document).ready(function (){
     $("#attack_button").hide();
     $("#counterAttackMessage").hide();
 
-
-    //If object is clicked, show/hide elements and save which character is chosen
     if($(".c2").on("click", function (){
         $(".c1").attr("class","enemies")
         $(".c2").attr("class","chosen")
@@ -214,7 +211,7 @@ $(document).ready(function (){
   
 
 
-    //this function attacks the opponent and decreases their health by 10
+    //this function attacks the opponent and decreases their health by the according character attack power
     
     function characterAttack(id){
         //Enemy 1
@@ -223,131 +220,114 @@ $(document).ready(function (){
                 //e1
                 enemies[0].e1.health -= charachters[0].c1.attackP;
                 charHealth = enemies[0].e1.health;
-                eHealth1.textContent = "Health:" + enemies[0].e1.health;
+                eHealth1.textContent = "Health:" + charHealth;
                 //e2
                 enemies[0].e2.health -= charachters[0].c1.attackP;;
                 charHealth = enemies[0].e2.health;
-                eHealth2.textContent = "Health:" + enemies[0].e2.health;
+                eHealth2.textContent = "Health:" + charHealth;
                 //e3
                 enemies[0].e3.health -= charachters[0].c1.attackP;;
                 charHealth = enemies[0].e3.health;
-                eHealth3.textContent = "Health:" + enemies[0].e3.health;
+                eHealth3.textContent = "Health:" + charHealth;
                 //e4
                 enemies[0].e4.health -= charachters[0].c1.attackP;;
                 charHealth = enemies[0].e4.health;
-                eHealth4.textContent = "Health:" + enemies[0].e4.health;
+                eHealth4.textContent = "Health:" + charHealth;
+
+                //Shows counter attack message
+                $("#counterAttackMessage").show();
+                //opponent loses 10 health
+                charachters[0].c1.health -= 10;
+                charHealth = charachters[0].c1.health;
+                health1.textContent = "Health:" + charHealth;
+
+                //characters attack power doubles
+                charachters[0].c1.attackP += charachters[0].c1.attackP;
             }
             if(id == "c2"){
                 //e1
                 enemies[0].e1.health -= charachters[0].c2.attackP;
                 charHealth = enemies[0].e1.health;
-                eHealth1.textContent = "Health:" + enemies[0].e1.health;
+                eHealth1.textContent = "Health:" + charHealth;
                 //e2
                 enemies[0].e2.health -= charachters[0].c2.attackP;;
                 charHealth = enemies[0].e2.health;
-                eHealth2.textContent = "Health:" + enemies[0].e2.health;
+                eHealth2.textContent = "Health:" + charHealth;
                 //e3
                 enemies[0].e3.health -= charachters[0].c2.attackP;;
                 charHealth = enemies[0].e3.health;
-                eHealth3.textContent = "Health:" + enemies[0].e3.health;
+                eHealth3.textContent = "Health:" + charHealth;
                 //e4
                 enemies[0].e4.health -= charachters[0].c2.attackP;;
                 charHealth = enemies[0].e4.health;
-                eHealth4.textContent = "Health:" + enemies[0].e4.health;
+                eHealth4.textContent = "Health:" + charHealth;
+
+                //Shows counter attack message
+                $("#counterAttackMessage").show();
+                //opponent loses 10 health
+                charachters[0].c2.health -= 10;
+                charHealth = charachters[0].c2.health;
+                health2.textContent = "Health:" + charHealth;
+
+                //characters attack power doubles
+                charachters[0].c2.attackP += charachters[0].c2.attackP;
             }
             if(id == "c3"){
                 //e3
                 enemies[0].e1.health -= charachters[0].c3.attackP;
                 charHealth = enemies[0].e1.health;
-                eHealth1.textContent = "Health:" + enemies[0].e1.health;
+                eHealth1.textContent = "Health:" + charHealth;
                 //e2
                 enemies[0].e2.health -= charachters[0].c3.attackP;;
                 charHealth = enemies[0].e2.health;
-                eHealth2.textContent = "Health:" + enemies[0].e2.health;
+                eHealth2.textContent = "Health:" + charHealth;
                 //e3
                 enemies[0].e3.health -= charachters[0].c3.attackP;;
                 charHealth = enemies[0].e3.health;
-                eHealth3.textContent = "Health:" + enemies[0].e3.health;
+                eHealth3.textContent = "Health:" + charHealth;
                 //e4
                 enemies[0].e4.health -= charachters[0].c3.attackP;;
                 charHealth = enemies[0].e4.health;
-                eHealth4.textContent = "Health:" + enemies[0].e4.health;
+                eHealth4.textContent = "Health:" + charHealth;
+
+                //Shows counter attack message
+                $("#counterAttackMessage").show();
+                //opponent loses 10 health
+                charachters[0].c3.health -= 10;
+                charHealth = charachters[0].c3.health;
+                health3.textContent = "Health:" + charHealth;
+
+                //characters attack power doubles
+                charachters[0].c3.attackP += charachters[0].c3.attackP;
             }
             if(id == "c4"){
                 //e1
                 enemies[0].e1.health -= charachters[0].c4.attackP;
                 charHealth = enemies[0].e1.health;
-                eHealth1.textContent = "Health:" + enemies[0].e1.health;
+                eHealth1.textContent = "Health:" + charHealth;
                 //e2
                 enemies[0].e2.health -= charachters[0].c4.attackP;;
                 charHealth = enemies[0].e2.health;
-                eHealth2.textContent = "Health:" + enemies[0].e2.health;
+                eHealth2.textContent = "Health:" + charHealth;
                 //e3
                 enemies[0].e3.health -= charachters[0].c4.attackP;;
                 charHealth = enemies[0].e3.health;
-                eHealth3.textContent = "Health:" + enemies[0].e3.health;
+                eHealth3.textContent = "Health:" + charHealth;
                 //e4
                 enemies[0].e4.health -= charachters[0].c4.attackP;;
                 charHealth = enemies[0].e4.health;
-                eHealth4.textContent = "Health:" + enemies[0].e4.health;
-            }
-            // if($("#charcter2").on("click", function(){
-            //     //e1
-            //     enemies[0].e1.health -= charachters[0].c2.attackP;;
-            //     charHealth = enemies[0].e1.health;
-            //     eHealth1.textContent = "Health:" + enemies[0].e1.health;
-            //     //e2
-            //     enemies[0].e2.health -= charachters[0].c2.attackP;;
-            //     charHealth = enemies[0].e2.health;
-            //     eHealth2.textContent = "Health:" + enemies[0].e2.health;
-            //     //e3
-            //     enemies[0].e3.health -= charachters[0].c2.attackP;;
-            //     charHealth = enemies[0].e3.health;
-            //     eHealth3.textContent = "Health:" + enemies[0].e3.health;
-            //     //e4
-            //     enemies[0].e4.health -= charachters[0].c2.attackP;;
-            //     charHealth = enemies[0].e4.health;
-            //     eHealth4.textContent = "Health:" + enemies[0].e4.health;
-            // }))
-            // if(oppHealths[i] == "c3"){
-            //     //e1
-            //     enemies[0].e1.health -= charachters[0].c3.attackP;;
-            //     charHealth = enemies[0].e1.health;
-            //     eHealth1.textContent = "Health:" + enemies[0].e1.health;
-            //     //e2
-            //     enemies[0].e2.health -= charachters[0].c3.attackP;;
-            //     charHealth = enemies[0].e2.health;
-            //     eHealth2.textContent = "Health:" + enemies[0].e2.health;
-            //     //e3
-            //     enemies[0].e3.health -= charachters[0].c3.attackP;;
-            //     charHealth = enemies[0].e3.health;
-            //     eHealth3.textContent = "Health:" + enemies[0].e3.health;
-            //     //e4
-            //     enemies[0].e4.health -= charachters[0].c3.attackP;;
-            //     charHealth = enemies[0].e4.health;
-            //     eHealth4.textContent = "Health:" + enemies[0].e4.health;
-                
-            // }
-            // if(oppHealths[i] == "c4"){
-            //     //e1
-            //     enemies[0].e1.health -= charachters[0].c4.attackP;;
-            //     charHealth = enemies[0].e1.health;
-            //     eHealth1.textContent = "Health:" + enemies[0].e1.health;
-            //     //e2
-            //     enemies[0].e2.health -= charachters[0].c4.attackP;;
-            //     charHealth = enemies[0].e2.health;
-            //     eHealth2.textContent = "Health:" + enemies[0].e2.health;
-            //     //e3
-            //     enemies[0].e3.health -= charachters[0].c4.attackP;;
-            //     charHealth = enemies[0].e3.health;
-            //     eHealth3.textContent = "Health:" + enemies[0].e3.health;
-            //     //e4
-            //     enemies[0].e4.health -= charachters[0].c4.attackP;;
-            //     charHealth = enemies[0].e4.health;
-            //     eHealth4.textContent = "Health:" + enemies[0].e4.health;
-            // }
+                eHealth4.textContent = "Health:" + charHealth;
 
-            // console.log(enemies[0].e1.health);
+                //Shows counter attack message
+                $("#counterAttackMessage").show();
+                //opponent loses 10 health
+                charachters[0].c4.health -= 10;
+                charHealth = charachters[0].c4.health;
+                health4.textContent = "Health:" + charHealth;
+
+                //characters attack power doubles
+                charachters[0].c4.attackP += charachters[0].c4.attackP;
+            }
             
     }
 
@@ -457,19 +437,237 @@ $(document).ready(function (){
         fade();
         $("#charcter1").on("click", function(){
             characterAttack("c1");
+            if(enemies[0].e1.health < 0){
+                $("#win").show();
+                setInterval(confirm("YOU WIN! Choose a new character!"),2000);
+                if(confirm=true){
+                    location.reload();
+                }
+            }
+            else if(enemies[0].e2.health < 0){
+                $("#win").show();
+                setInterval(confirm("YOU WIN! Choose a new character!"),2000);
+                if(confirm=true){
+                    location.reload();
+                }
+            }
+            else if(enemies[0].e3.health < 0){
+                $("#win").show();
+                setInterval(confirm("YOU WIN! Choose a new character!"),2000);
+                if(confirm=true){
+                    location.reload();
+                }
+            }
+            else if(enemies[0].e4.health < 0){
+                $("#win").show();
+                setInterval(confirm("YOU WIN! Choose a new character!"),2000);
+                if(confirm=true){
+                    location.reload();
+                }
+            }
+//LOSE CASE
+            characterAttack("c1");
+            if(charachters[0].c1.health < 0){
+                setInterval(confirm("YOU LOSE! Choose a new character!"),2000);
+                if(confirm=true){
+                    location.reload();
+                }
+            }
+            else if(charachters[0].c2.health < 0){
+                setInterval(confirm("YOU LOSE! Choose a new character!"),2000);
+                if(confirm=true){
+                    location.reload();
+                }
+            }
+            else if(charachters[0].c3.health < 0){
+                setInterval(confirm("YOU LOSE! Choose a new character!"),2000);
+                if(confirm=true){
+                    location.reload();
+                }
+            }
+            if(charachters[0].c4.health < 0){
+                setInterval(confirm("YOU LOSE! Choose a new character!"),2000);
+                if(confirm=true){
+                    location.reload();
+                }
+            }
+        
         })
         $("#charcter2").on("click", function(){
             characterAttack("c2");
+            if(enemies[0].e1.health < 0){
+                $("#win").show();
+                setInterval(confirm("YOU WIN! Choose a new character!"),2000);
+                if(confirm=true){
+                    
+                }
+            }
+            else if(enemies[0].e2.health < 0){
+                $("#win").show();
+                setInterval(confirm("YOU WIN! Choose a new character!"),2000);
+                if(confirm=true){
+                    location.reload();
+                }
+            }
+            else if(enemies[0].e3.health < 0){
+                $("#win").show();
+                setInterval(confirm("YOU WIN! Choose a new character!"),2000);
+                if(confirm=true){
+                    location.reload();
+                }
+            }
+            else if(enemies[0].e4.health < 0){
+                $("#win").show();
+                setInterval(confirm("YOU WIN! Choose a new character!"),2000);
+                if(confirm=true){
+                    location.reload();
+                }
+            }
+//LOSE CASE
+            characterAttack("c1");
+            if(charachters[0].c1.health < 0){
+                setInterval(confirm("YOU LOSE! Choose a new character!"),2000);
+                if(confirm=true){
+                    location.reload();
+                }
+            }
+            else if(charachters[0].c2.health < 0){
+                setInterval(confirm("YOU LOSE! Choose a new character!"),2000);
+                if(confirm=true){
+                    location.reload();
+                }
+            }
+            else if(charachters[0].c3.health < 0){
+                setInterval(confirm("YOU LOSE! Choose a new character!"),2000);
+                if(confirm=true){
+                    location.reload();
+                }
+            }
+            if(charachters[0].c4.health < 0){
+                setInterval(confirm("YOU LOSE! Choose a new character!"),2000);
+                if(confirm=true){
+                    location.reload();
+                }
+            }
         })
         $("#charcter3").on("click", function(){
             characterAttack("c3");
+            if(enemies[0].e1.health < 0){
+                $("#win").show();
+                setInterval(confirm("YOU WIN! Choose a new character!"),2000);
+                if(confirm=true){
+                    
+                }
+            }
+            else if(enemies[0].e2.health < 0){
+                $("#win").show();
+                setInterval(confirm("YOU WIN! Choose a new character!"),2000);
+                if(confirm=true){
+                    location.reload();
+                }
+            }
+            else if(enemies[0].e3.health < 0){
+                $("#win").show();
+                setInterval(confirm("YOU WIN! Choose a new character!"),2000);
+                if(confirm=true){
+                    location.reload();
+                }
+            }
+            else if(enemies[0].e4.health < 0){
+                $("#win").show();
+                setInterval(confirm("YOU WIN! Choose a new character!"),2000);
+                if(confirm=true){
+                    location.reload();
+                }
+            }
+//LOSE CASE
+            characterAttack("c1");
+            if(charachters[0].c1.health < 0){
+                setInterval(confirm("YOU LOSE! Choose a new character!"),2000);
+                if(confirm=true){
+                    location.reload();
+                }
+            }
+            else if(charachters[0].c2.health < 0){
+                setInterval(confirm("YOU LOSE! Choose a new character!"),2000);
+                if(confirm=true){
+                    location.reload();
+                }
+            }
+            else if(charachters[0].c3.health < 0){
+                setInterval(confirm("YOU LOSE! Choose a new character!"),2000);
+                if(confirm=true){
+                    location.reload();
+                }
+            }
+            if(charachters[0].c4.health < 0){
+                setInterval(confirm("YOU LOSE! Choose a new character!"),2000);
+                if(confirm=true){
+                    location.reload();
+                }
+            }
         })
         $("#charcter4").on("click", function(){
             characterAttack("c4");
+            if(enemies[0].e1.health < 0){
+                $("#win").show();
+                setInterval(confirm("YOU WIN! Choose a new character!"),2000);
+                if(confirm=true){
+                    
+                }
+            }
+            else if(enemies[0].e2.health < 0){
+                $("#win").show();
+                setInterval(confirm("YOU WIN! Choose a new character!"),2000);
+                if(confirm=true){
+                    location.reload();
+                }
+            }
+            else if(enemies[0].e3.health < 0){
+                $("#win").show();
+                setInterval(confirm("YOU WIN! Choose a new character!"),2000);
+                if(confirm=true){
+                    location.reload();
+                }
+            }
+            else if(enemies[0].e4.health < 0){
+                $("#win").show();
+                setInterval(confirm("YOU WIN! Choose a new character!"),2000);
+                if(confirm=true){
+                    location.reload();
+                }
+            }
+//LOSE CASE
+            characterAttack("c1");
+            if(charachters[0].c1.health < 0){
+                setInterval(confirm("YOU LOSE! Choose a new character!"),2000);
+                if(confirm=true){
+                    location.reload();
+                }
+            }
+            else if(charachters[0].c2.health < 0){
+                setInterval(confirm("YOU LOSE! Choose a new character!"),2000);
+                if(confirm=true){
+                    location.reload();
+                }
+            }
+            else if(charachters[0].c3.health < 0){
+                setInterval(confirm("YOU LOSE! Choose a new character!"),2000);
+                if(confirm=true){
+                    location.reload();
+                }
+            }
+            if(charachters[0].c4.health < 0){
+                setInterval(confirm("YOU LOSE! Choose a new character!"),2000);
+                if(confirm=true){
+                    location.reload();
+                }
+            }
         })
                
 
     })
+
 
 
     //console.log(characterAttack("e2"));
